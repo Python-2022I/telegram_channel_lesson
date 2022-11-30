@@ -13,8 +13,16 @@ def get_post_month(data:dict,month:int)->int:
     """
     # Initialize a counter
     count = 0
+    messages = data['messages']
     # Loop through the dictionary
-    
+    for msg in messages:
+        
+        if msg['type']=='message':
+            date=msg['date']
+            # Get month from date
+            
+            if int(date[5:7])==month:
+                count+=1
     
  
     return count
@@ -24,4 +32,5 @@ file_path = "data/result.json"
 # Read the data
 data = fromJson(file_path)
 # Get the number of posts for the month of September
-count = get_post_month(data,9)
+count = get_post_month(data,10)
+print(count)
